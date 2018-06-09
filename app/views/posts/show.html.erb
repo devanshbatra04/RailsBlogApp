@@ -10,6 +10,17 @@
             data: {confirm: 'Are you sure?'},
             :class=> "btn btn-danger"
 %>
+
+<h3>Comments</h3>
+<% @post.comments.each do |comment| %>
+  <div>
+    <p>
+      <strong><%= comment.username %></strong>:
+      <%= comment.body %>
+    </p>
+  </div>
+<% end %>
+
 <%= form_for([@post, @post.comments.build]) do |f| %>
   <p>
     <%= f.label :username %><br>
