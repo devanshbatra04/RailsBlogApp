@@ -12,9 +12,12 @@ class PostsController < ApplicationController
     # render plain: params[:post].inspect
     @post = Post.new(post_params)
 
-    @post.save
-    redirect_to @post
-  end
+      if @post.save
+        redirect_to @post
+        else
+          render 'new'
+      end
+    end
   private def post_params
     params.require(:post).permit(:title,:body)
   end
